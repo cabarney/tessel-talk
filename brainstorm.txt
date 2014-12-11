@@ -1,0 +1,46 @@
+Tessel Talk
+
+
+IoT General Overview
+
+Tessel
+	- System overview
+	- Comparison to others
+	- EASY!
+	- Modules
+	- Compatibility with other microcontrollers / components
+
+Installation
+Development tools / environment
+
+API? - pins/ports/etc...
+
+DEMOS
+	- Hello world - How easy is this?
+	- Module demos
+		- Accelerometer
+		- Relay + RFID
+	- node.js
+		- tiny-router
+		- ????
+	- Poll - TXT to Twilio, signalr-client to recive - servo to display result
+	- Applause meter (ambient) - display on NeoPixels - TXT code to attendees
+
+
+
+
+
+
+Inventory
+	- 2x Tessel Board
+	- RFID Module
+	- Relay module
+	- Audio module
+	- GPS module
+	- Ambienbt module (sound, light)
+	- Camera module
+	- Climate module (temp, humidity?)
+	- Accelerometer module
+	- Servo module (6 servos, one continuous rotating)
+	- PIR Sensor
+
