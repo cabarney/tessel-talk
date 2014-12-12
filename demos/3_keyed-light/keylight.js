@@ -1,6 +1,7 @@
 var tessel = require('tessel');
 var rfidlib = require('rfid-pn532');
 var relaylib = require('relay-mono');
+//var pir = require('pir').use(tessel.port['GPIO'].pin['G4']);
 
 var rfid = rfidlib.use(tessel.port['A']); 
 var relay = relaylib.use(tessel.port['B']);  
@@ -20,9 +21,19 @@ rfid.on('ready', function (version) {
   });
 });
 
-rfid.on('error', function (err) {
-  console.error(err);
-});
+//pir.on('ready', function(pir){
+//  pir.on('movement', function(time){
+//    console.log("Movement");
+//    relay.toggle(1);
+//  });
+//  pir.on('stillness', function(time){
+//    console.log("Stilness");
+//    relay.toggle(1);
+//  });
+//});
+//rfid.on('error', function (err) {
+//  console.error(err);
+//});
 
 function resetLeds(){
   	tessel.led[0].output(0);
