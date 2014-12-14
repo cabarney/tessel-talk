@@ -1,6 +1,3 @@
-var account_sid = "ACf2b5e356acaf9f03eff2d3982f68067d";
-var auth_token = "da44937509cefcfed260afdb0f0e028a";
-var twilio_num = "4028589600";
 
 var tessel = require('tessel');
 var http = require('http');
