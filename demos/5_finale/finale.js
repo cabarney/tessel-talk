@@ -1,3 +1,6 @@
+var account_sid = "";
+var auth_token = "";
+var twilio_num = "";
 
 var tessel = require('tessel');
 var http = require('http');
