@@ -17,13 +17,7 @@ var neopixels = new Neopixels();
 ambient.on('ready', function () {
   ambient.setSoundTrigger(threshold);
 
-  setInterval(function(){
-      ambient.getSoundLevel(function(err,data){  
-      if(data > threshold) data = threshold;
-      var pixel = Math.floor((data/threshold) * pixelCount);
-      showPixel(pixel);
-  	});
-  }, 50);
+  setTimeout(sampleSoundLevel, 10);
 
   ambient.on('sound-trigger', function(data) {
   	console.log("triggered!");
@@ -35,6 +29,15 @@ ambient.on('ready', function () {
   });
 });
 
+function sampleSoundLevel()
+{
+  ambient.getSoundLevel(function(err,data){  
+    if(data > threshold) data = threshold;
+    var pixel = Math.floor((data/threshold) * pixelCount);
+    showPixel(pixel);
+  }
+  setTimeout(sampleSoundLevel, 10);
+}
 
 function showPixel(pixel){
   var buf = new Buffer(pixelCount * 3);
