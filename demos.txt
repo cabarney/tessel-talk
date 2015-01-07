@@ -1,0 +1,115 @@
+========================
+DEMO 1 : BLINKING LIGHTS
+========================
+
+SETUP: None
+
+KEY POINTS
+	- It's SO easy!
+
+=============================
+DEMO 2: MODULES: ACCELERATION
+=============================
+
+SETUP 
+	A: Acceleration Module
+
+STEPS
+	1. npm install <module name>
+	   (in our case, just npm install will restore from packages.json)
+
+KEY POINTS
+	- Modules are easy too
+	- NPM for libraries
+	- Package name is on the module
+
+
+=================================
+DEMO 3: MODULES WORKING TODGETHER
+=================================
+
+SETUP
+	A: RFID
+	B: RFID
+	B (Passthrough): Relay
+	C: Ambient
+
+	Relay switch 1: Light bulb
+	PIR Sensor
+		black: GPIO Ground
+		red: GPIO +5V
+		yellow: GPIO G4
+
+STEPS
+	1. npm install
+	2. Start with only rfid
+	3. Add motion detection - uncomment PIR code and hook up PIR
+	4. Add clapper support - uncomment clapper code, attach Ambient
+
+KEY POINTS
+	- Modules can work together nicely to do useful things
+	- The Clapper is back!
+
+
+
+============================================
+DEMO 4: WEB SERVER - HOME CLIMATE MONITORING
+============================================
+
+SETUP
+	A: Climate module
+
+STEPS
+	1. npm install
+	2. tessel wifi -l (get tessel's current IP)
+	3. tessel run index
+	4. Navigate to http://<TESSEL IP>:8080
+	5. Go to climate page
+
+KEY POINTS
+	- ExpressJS doesn't work yet (support is hopefully coming soon)
+	- tiny-router is a good replacement for now
+	- Wifi built-in is awesome, but can have some issues
+	- It's just as easy to push commands to the tessel (including over websockets)
+
+
+
+==============
+DEMO 5: FINALE
+==============
+
+SETUP
+	A: Ambient Module
+	
+	NEOPIXELS
+		5V Power Supply to breadboard
+		Capacitor between + and -
+		Resistor between GPIO G4 and Tessel input
+		Power wires to breadboard power
+
+STEPS
+	1. Before going over code, have everyone text 402-858-9600 
+	2. Paste twilio info into file
+	3. npm install
+
+KEY POINTS
+	- NPM libraries for 3rd party services and components
+		- Twilio
+		- Neopixels
+	- 10% Discount!
+	Neopixels are pretty
+
+
+
+=============================
+DEMO X: ABC
+=============================
+
+SETUP
+	A: 
+
+STEPS
+	1.
+
+KEY POINTS
+	-

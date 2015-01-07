@@ -4,9 +4,10 @@
   "description": "",
   "main": "keylight.js",
   "dependencies": {
+    "ambient-attx4": "^0.2.4",
     "pir": "^0.0.6",
-    "rfid-pn532": "^0.1.7",
-    "relay-mono": "^0.1.2"
+    "relay-mono": "^0.1.2",
+    "rfid-pn532": "^0.1.7"
   },
   "devDependencies": {},
   "scripts": {

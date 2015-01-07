@@ -8,27 +8,25 @@ var climate = climateLib.use(tessel.port['A']);
 router.use('fs', fs);
 
 router
-	.get('/', function(req, res){
-		router.readFile('./webroot/index.html', function (err, data){
-			res.send(data.toString());
-		});
-	})
-	.get('/climate', function(req, res){
-		router.readFile('./webroot/climate.html', function (err, data){
-			var html = data.toString();
-			console.log(html);
-			climate.readTemperature('f', function (err, temp){
-				climate.readHumidity(function (err, humid) {
-					html = html.replace('{temp}', temp.toFixed(4));
-					html = html.replace('{humidity}', humid.toFixed(4));
-					res.send(html);
-				});
-			});			
-		});
-	});
+    .get('/', function(req, res) {
+        router.readFile('./webroot/index.html', function(err, data) {
+            res.send(data.toString());
+        });
+    })
+    .get('/climate', function(req, res) {
+        router.readFile('./webroot/climate.html', function(err, data) {
+            var html = data.toString();
+            climate.readTemperature('f', function(err, temp) {
+                climate.readHumidity(function(err, humid) {
+                    html = html.replace('{temp}', temp.toFixed(4));
+                    html = html.replace('{humidity}', humid.toFixed(4));
+                    res.send(html);
+                });
+            });
+        });
+    });
 
-climate.on('ready', function(){
-	router.listen(8080);
-	console.log("Listening...");
+climate.on('ready', function() {
+    router.listen(8080);
+    console.log("Listening...");
 });
-
