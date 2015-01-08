@@ -11,6 +11,9 @@ rfid.on('ready', function(version) {
         var code = card.uid.toString('hex');
         if (code === '021e7303') {
             relay.toggle(1);
+            console.log("VALID KEY SCANNED");
+        } else {
+            console.log("INVALID KEY");
         }
     });
 });
@@ -20,14 +23,20 @@ rfid.on('error', function(err) {
 });
 
 
+// ========================================================
+
+
 var pir = require('pir').use(tessel.port['GPIO'].pin['G4']);
 pir.on('ready', function(pir) {
     pir.on('movement', function(time) {
         console.log("Movement");
         relay.turnOn(1);
     });
+    pir.on("stillness", function(time) { console.log("Stillness...");});
 });
 
+
+// ========================================================
 
 
 var ambient = ambientLib.use(tessel.port['C']);
@@ -38,7 +47,7 @@ ambient.on('ready', function() {
         console.log("sound trigger!");
         ambient.clearSoundTrigger();
         setTimeout(function() {
-            ambient.setSoundTrigger(0.2);
+            ambient.setSoundTrigger(0.1);
         }, 100)
         var now = new Date();
         if (now - lastTimeSoundTriggered < 1500) { // less than 1.5 second

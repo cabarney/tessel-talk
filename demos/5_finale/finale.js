@@ -1,14 +1,15 @@
 
+
 var tessel = require('tessel');
 var http = require('http');
 var twilio = require('twilio')(account_sid, auth_token);
 
 var ambientLib = require('ambient-attx4');
-var ambient = ambientLib.use(tessel.port['A']);
+var ambient = ambientLib.use(tessel.port['C']);
 
 var Neopixels = require('neopixels');
 var pixelCount = 60;
-var threshold = 0.2;
+var threshold = 0.25;
 var neopixels = new Neopixels();
 
 ambient.on('ready', function() {
@@ -47,6 +48,7 @@ function winner() {
     ambient.clearSoundTrigger();
     getNumbers(function(numbers) {
         numbers.forEach(function(n) {
+            //console.log(n);
             sendText(n, twilio_num, "Thanks for coming. Use discount code 'TESSEL-CODEMASH' for a 10% discount at tessel.io!");
         });
     });
@@ -64,6 +66,7 @@ function getNumbers(callback) {
     http.get("http://twiliosvc.azurewebsites.net/api/twilio/getList", function(res) {
         var result = '';
         res.on('data', function(data) {
+            //console.log(data.toString());
             result = new Buffer(data).toString();
             var numbers = JSON.parse(result);
 
