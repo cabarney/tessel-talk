@@ -1,4 +1,6 @@
-
+var account_sid = "ACf2b5e356acaf9f03eff2d3982f68067d";
+var auth_token = "da44937509cefcfed260afdb0f0e028a";
+var twilio_num = "4028589600";
 
 var tessel = require('tessel');
 var http = require('http');
@@ -9,7 +11,7 @@ var ambient = ambientLib.use(tessel.port['C']);
 
 var Neopixels = require('neopixels');
 var pixelCount = 60;
-var threshold = 0.25;
+var threshold = 0.4;
 var neopixels = new Neopixels();
 
 ambient.on('ready', function() {

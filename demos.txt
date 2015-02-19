@@ -98,18 +98,3 @@ KEY POINTS
 		- Neopixels
 	- 10% Discount!
 	Neopixels are pretty
-
-
-
-=============================
-DEMO X: ABC
-=============================
-
-SETUP
-	A: 
-
-STEPS
-	1.
-
-KEY POINTS
-	-

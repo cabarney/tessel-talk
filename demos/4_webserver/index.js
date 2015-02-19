@@ -18,8 +18,8 @@ router
             var html = data.toString();
             climate.readTemperature('f', function(err, temp) {
                 climate.readHumidity(function(err, humid) {
-                    html = html.replace('{temp}', temp.toFixed(4));
-                    html = html.replace('{humidity}', humid.toFixed(4));
+                    html = html.replace('{temp}', temp.toFixed(2));
+                    html = html.replace('{humidity}', humid.toFixed(2));
                     res.send(html);
                 });
             });
@@ -28,5 +28,5 @@ router
 
 climate.on('ready', function() {
     router.listen(8080);
-    console.log("Listening...");
+    console.log("Listening on port 8080...");
 });

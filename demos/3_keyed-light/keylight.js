@@ -3,10 +3,11 @@ var rfidlib = require('rfid-pn532');
 var relaylib = require('relay-mono');
 var ambientLib = require('ambient-attx4');
 
+var rfid = rfidlib.use(tessel.port['A']);
 var relay = relaylib.use(tessel.port['B']);
 
-var rfid = rfidlib.use(tessel.port['A']);
 rfid.on('ready', function(version) {
+    console.log("RFID Scanner Ready");
     rfid.on('data', function(card) {
         var code = card.uid.toString('hex');
         if (code === '021e7303') {
@@ -28,6 +29,7 @@ rfid.on('error', function(err) {
 
 var pir = require('pir').use(tessel.port['GPIO'].pin['G4']);
 pir.on('ready', function(pir) {
+    console.log("PIR Motion Detection Ready");
     pir.on('movement', function(time) {
         console.log("Movement");
         relay.turnOn(1);
@@ -41,6 +43,7 @@ pir.on('ready', function(pir) {
 
 var ambient = ambientLib.use(tessel.port['C']);
 ambient.on('ready', function() {
+    console.log("Ambient Ready");
     ambient.setSoundTrigger(0.2);
     var lastTimeSoundTriggered = new Date();
     ambient.on('sound-trigger', function() {
@@ -51,7 +54,7 @@ ambient.on('ready', function() {
         }, 100)
         var now = new Date();
         if (now - lastTimeSoundTriggered < 1500) { // less than 1.5 second
-            console.log("Clap On, Clap Off, The CLAPPER! ");
+            console.log("You know the jingle...");
             relay.toggle(1);
         } else {
             lastTimeSoundTriggered = now;
